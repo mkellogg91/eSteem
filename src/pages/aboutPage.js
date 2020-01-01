@@ -4,8 +4,8 @@ class AboutPage extends React.Component{
 
     render = () => {
         return (
-            <div>
-                <h1>this is a test</h1>
+            <div className="container">
+                <h1>this is the about page!</h1>
             </div>
         );
     };

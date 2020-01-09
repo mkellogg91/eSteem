@@ -1,19 +1,16 @@
 import React from 'react';
 
-class HomePage extends React.Component{    
+class HomePage extends React.Component {
 
     render = () => {
         return (
             <div className="container">
-                <h1>This is our home page!</h1>
-
-                <div className="card" style={{width: '18rem'}}>
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
+                <br></br>
+                <br></br>
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Esteem Game Utility</h1>
+                        <p class="lead">Esteem is a helpful game library for gamers by gamers.</p>
                     </div>
                 </div>
             </div>

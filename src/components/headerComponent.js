@@ -17,10 +17,10 @@ class HeaderComponent extends React.Component {
                                 <NavLink to="/" className="nav-link">Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/about" className="nav-link">About</NavLink>
+                                <NavLink to="/games" className="nav-link">Games</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/stats" className="nav-link">Steam Stats</NavLink>
+                                <NavLink to="/about" className="nav-link">About</NavLink>
                             </li>
                         </ul>
                     </div>

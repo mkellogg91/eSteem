@@ -28,7 +28,7 @@ class GamesPage extends React.Component {
         var options = {
             uri: 'https://api.rawg.io/api/games',
             qs: {
-                page_size: 20,
+                page_size: 50,
                 page: 1
             },
             headers: {
@@ -51,6 +51,22 @@ class GamesPage extends React.Component {
             });
     }
 
+    gameList = () =>{
+        let gameListItems = [];
+        if(this.state.gameData && this.state.gameData.results){
+            gameListItems = this.state.gameData.results.map((game)=>{
+               return <GameCard key={game.id} propsObj={game} />
+            });
+
+            return (
+                gameListItems
+            );
+        }
+        else{
+            return <span />
+        }   
+    }
+
     render = () => {
         return (
             <div className="container">
@@ -58,10 +74,10 @@ class GamesPage extends React.Component {
 
                 {/* TODO: setup map of game card components */}
 
-                <div class="card-deck">
-                    <GameCard propsObj={this.state.gameData && this.state.gameData.results ? this.state.gameData.results[0] : <span />} />
-                    <GameCard propsObj={this.state.gameData && this.state.gameData.results ? this.state.gameData.results[1] : <span />} />
-                    <GameCard propsObj={this.state.gameData && this.state.gameData.results ? this.state.gameData.results[2] : <span />} />
+                <div className="card-deck">
+                    
+                   {this.gameList()}
+
                 </div>
 
             </div>

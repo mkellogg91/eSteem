@@ -8,17 +8,27 @@ class GameCard extends React.Component {
         super(props);
     }
 
+    titleLengthCheck = (title)=> {
+        if(title.length >= 22){
+            return (title.substring(0, 22) + "...");
+        }
+        else{
+            return title;
+        }
+    }
+
     render = () => {
         return (
             <div>
-                <div className="card" >
+                <div className="card" style={{marginTop: '15px'}}>
                     <div className="card-header">
                         <h5>
-                            {this.props.propsObj.name}
+                            {this.titleLengthCheck(this.props.propsObj.name)}
                         </h5>
                     </div>
 
-                    <img className="card-img-top" src={this.props.propsObj.background_image} alt="Card image cap" />
+                    <img className="card-img-top" src={this.props.propsObj.background_image} alt="Card image cap" 
+                    style={{maxHeight: '160px', maxWidth: '292px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px'}} />
                     <div className="card-body">
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">

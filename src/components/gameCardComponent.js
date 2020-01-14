@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import testImg from '../assets/corn_flakes.png';
+import '../css/gameCardStyles.css';
 
 class GameCard extends React.Component {
 
@@ -20,15 +21,14 @@ class GameCard extends React.Component {
     render = () => {
         return (
             <div>
-                <div className="card" style={{marginTop: '15px'}}>
+                <div className="card gameCard">
                     <div className="card-header">
-                        <h5>
+                        <h6>
                             {this.titleLengthCheck(this.props.propsObj.name)}
-                        </h5>
+                        </h6>
                     </div>
 
-                    <img className="card-img-top" src={this.props.propsObj.background_image} alt="Card image cap" 
-                    style={{maxHeight: '160px', maxWidth: '292px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px'}} />
+                    <img className="card-img-top gameCardImg" src={this.props.propsObj.background_image} alt="Card image cap"  />
                     <div className="card-body">
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">

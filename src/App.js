@@ -6,6 +6,7 @@ import AboutPage from './pages/aboutPage';
 import HomePage from './pages/homePage';
 import HeaderComponent from './components/headerComponent';
 import GamesPage from './pages/gamesPage';
+import FooterComponent from './components/footerComponent';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" component={AboutPage} />
         <Route path="/games" component={GamesPage} />
       </Switch>
+      <FooterComponent />
     </div>
   );
 }

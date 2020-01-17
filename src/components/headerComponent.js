@@ -1,30 +1,27 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import VideogameAssetOutlinedIcon from '@material-ui/icons/VideogameAssetOutlined';
 
 class HeaderComponent extends React.Component {
 
     render = () => {
         return (
-            <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-success">
-                    <a className="navbar-brand" href="#">eSteem</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink to="/" className="nav-link">Home</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/games" className="nav-link">Games</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/about" className="nav-link">About</NavLink>
-                            </li>
-                        </ul>
+            <div className="header">
+                <NavLink className="navbar-brand" to="/">
+                    <div className="logo font-24">
+                        <span>eSteem</span>
+                        <VideogameAssetOutlinedIcon fontSize="large" className="pl-5" />
                     </div>
-                </nav>
+                </NavLink>
+
+                <div className="menu-link-div">
+                    <NavLink to="/" className="menu-bar-link">Home</NavLink>
+                    <NavLink to="/games" className="menu-bar-link">Games</NavLink>
+                    <NavLink to="/about" className="menu-bar-link">About</NavLink>
+                </div>
+                <div class="login-div">
+                    <NavLink to="/login" className="menu-bar-link">Login</NavLink>
+                </div>
             </div>
         );
     };

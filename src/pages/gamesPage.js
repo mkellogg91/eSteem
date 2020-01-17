@@ -51,35 +51,36 @@ class GamesPage extends React.Component {
             });
     }
 
-    gameList = () =>{
+    gameList = () => {
         let gameListItems = [];
-        if(this.state.gameData && this.state.gameData.results){
-            gameListItems = this.state.gameData.results.map((game)=>{
-               return <GameCard key={game.id} propsObj={game} />
+        if (this.state.gameData && this.state.gameData.results) {
+            gameListItems = this.state.gameData.results.map((game) => {
+                return <GameCard key={game.id} propsObj={game} />
             });
 
             return (
                 gameListItems
             );
         }
-        else{
+        else {
             return <span />
-        }   
+        }
     }
 
     render = () => {
         return (
             <div className="container">
-                <h1>Games Page!</h1>
-
-                {/* TODO: setup map of game card components */}
-
-                <div className="card-deck">
-                    
-                   {this.gameList()}
-
+                <div className="text-center">
+                    <h1>Game Directory</h1>
                 </div>
 
+
+                {/* TODO: style the input tag */}
+                {/* <input type="text"></input> */}
+
+                <div className="card-deck">
+                    {this.gameList()}
+                </div>
             </div>
         );
     };

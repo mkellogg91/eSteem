@@ -6,8 +6,8 @@ class FooterComponent extends React.Component {
     render = () => {
         return (
             <div>
-               <div className="bg-success p-3">
-
+               <div className="">
+                    
                </div>
             </div>
         );

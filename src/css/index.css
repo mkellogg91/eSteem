@@ -17,6 +17,10 @@ body .container {
   padding: 15px 10% 15px 10%;
   background-color: #f2f4f7;
 }
+body hr {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -100,15 +104,17 @@ code {
 .navbar-brand {
   padding-left: 5px;
   text-decoration: none;
-  color: #ffffff;
+  color: #cecece;
 }
 
 .gameCard {
   background-color: #ffffff;
   border-radius: 1%;
   width: 226px;
+  text-decoration: none;
   margin: 20px;
   border: solid 1px;
+  border-color: #3c412f;
 }
 
 .gameCardImg {
@@ -120,6 +126,7 @@ code {
 
 .card-deck {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   padding-left: 5px;
@@ -128,11 +135,31 @@ code {
 
 .card-header {
   display: block;
+  color: #3c412f;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #20232a;
+  color: #cecece;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.card-body-item {
+  padding: 5px 20px 5px 20px;
+}
+
+.card-link {
+  text-decoration: none;
 }
 
 .homePageJumbo {

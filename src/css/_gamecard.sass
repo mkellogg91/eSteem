@@ -2,9 +2,10 @@
     background-color: $secondary
     border-radius: 1%
     width: 226px
-    
+    text-decoration: none
     margin: 20px
-    border: solid 1px
+    border: solid 1px 
+    border-color: $font-color
 
 .gameCardImg
     height: 126px
@@ -14,6 +15,7 @@
 
 .card-deck
     display: flex
+    justify-content: center
     flex-direction: row
     flex-wrap: wrap
     padding-left: 5px
@@ -21,8 +23,25 @@
 
 .card-header
     display: block
+    color: $font-color
     font-size: 18px
     font-weight: bold
     text-align: center
     padding-top: 10px
     padding-bottom: 10px
+
+.card-body
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    background-color: $dark
+    color: $header-link-color
+    text-align: center
+    padding-top: 10px
+    padding-bottom: 10px
+
+.card-body-item
+    padding: 5px 20px 5px 20px
+
+.card-link
+    text-decoration: none

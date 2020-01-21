@@ -7,6 +7,7 @@ import GamesPage from './pages/gamesPage';
 import FooterComponent from './components/footerComponent';
 import LoginPage from './pages/loginPage';
 import RegisterPage from './pages/registerPage';
+import GameDetailsPage from './pages/gameDetailsPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/games" component={GamesPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/gamedetails" component={GameDetailsPage} />
       </Switch>
       <FooterComponent />
     </div>

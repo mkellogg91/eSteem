@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 class GameCard extends React.Component {
@@ -8,8 +9,8 @@ class GameCard extends React.Component {
     }
 
     titleLengthCheck = (title) => {
-        if (title.length >= 22) {
-            return (title.substring(0, 22) + "...");
+        if (title.length >= 21) {
+            return (title.substring(0, 21) + "...");
         }
         else {
             return title;
@@ -18,36 +19,29 @@ class GameCard extends React.Component {
 
     render = () => {
         return (
-            <div className="gameCard">
-                <img className="card-img-top gameCardImg" src={this.props.propsObj.background_image} alt="Card image cap" />
-                <div className="card-header">
-                    {this.titleLengthCheck(this.props.propsObj.name)}
-                </div>
-                <div className="card-body">
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">
-                            <div className="row">
-                                <div className="col">
-                                    <b>Rating: </b>
-                                </div>
-                                <div className="col">
-                                    <span>{this.props.propsObj.rating}</span>
-                                </div>
+            <NavLink className="card-link" to={'gamedetails/' + this.props.propsObj.id}>
+                <div className="gameCard">
+                    <img className="card-img-top gameCardImg" src={this.props.propsObj.background_image} alt="Card image cap" />
+                    <div className="card-header">
+                        {this.titleLengthCheck(this.props.propsObj.name)}
+                    </div>
+
+                    <div className="card-body">
+                        <div className="card-body-item">
+                            <div className="">
+                                <b>Rating: </b>
+                                <span>{this.props.propsObj.rating}</span>
                             </div>
-                        </li>
-                        <li className="list-group-item">
-                            <div className="row">
-                                <div className="col">
-                                    <b>Release Date: </b>
-                                </div>
-                                <div className="col">
-                                    <span>{this.props.propsObj.released}</span>
-                                </div>
+                        </div>
+                        <div className="card-body-item">
+                            <div className="">
+                                <b>Released: </b>
+                                <span>{this.props.propsObj.released}</span>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </NavLink>
         );
     };
 

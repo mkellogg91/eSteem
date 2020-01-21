@@ -13,10 +13,7 @@ class GamesPage extends React.Component {
     }
 
     componentDidMount() {
-
         // TODO: convert to redux instead of local state
-
-
         this.requestGames();
     }
 
@@ -31,9 +28,7 @@ class GamesPage extends React.Component {
                 page_size: 50,
                 page: 1
             },
-            headers: {
-
-            },
+            headers: {},
             json: true // Automatically parses the JSON string in the response
         };
 

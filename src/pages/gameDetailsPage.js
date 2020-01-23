@@ -1,25 +1,21 @@
 import React from 'react';
 import rp from 'request-promise';
 
-class GameDetailsPage extends React.Component{    
+class GameDetailsPage extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            gameId: [],
+            gameId: this.props.location.pathname.substring(13),
             gameData: []
         }
+
+
     }
 
-    componentDidMount(){
-        // fetch game id
-        // call api
-    }
-
-    // pulls game id out of the url
-    fetchGameId = () => {
-        // set game id state prop with url value
+    componentDidMount() {
+        this.getGameDetails();
     }
 
     // makes api call for game details
@@ -48,7 +44,25 @@ class GameDetailsPage extends React.Component{
     render = () => {
         return (
             <div className="container homePageJumbo">
-                <h1>Game Details Page</h1>
+                <div className="gameTitle">{this.state.gameData.name}</div>
+                <div className="columnWrapper">
+                    <div className="detailsLeftCol">
+                        <div>
+                            <div className="detailsLeftCol"> 
+                                
+                            </div>
+                            <div className="detailsRightCol">
+
+                            </div>
+                        </div>
+                        <h4>Description</h4>
+                        {this.state.gameData.description_raw}
+                    </div>
+                    <div className="detailsRightCol">
+                        <img className="details-img" src={this.state.gameData.background_image}></img>
+                    </div>
+                </div>
+
             </div>
         );
     };

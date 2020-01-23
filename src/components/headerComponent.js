@@ -19,7 +19,7 @@ class HeaderComponent extends React.Component {
                     <NavLink to="/games" className="menu-bar-link">Games</NavLink>
                     <NavLink to="/about" className="menu-bar-link">About</NavLink>
                 </div>
-                <div class="login-div">
+                <div className="login-div">
                     <NavLink to="/login" className="menu-bar-link">Login</NavLink>
                 </div>
             </div>

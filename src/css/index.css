@@ -23,6 +23,12 @@ body hr {
   margin-left: 10px;
   margin-right: 10px;
 }
+body .section-heading {
+  font-size: 24;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -185,6 +191,10 @@ code {
   flex-direction: column;
   width: 45%;
   text-align: left;
+  border: solid 2px;
+  border-radius: 1%;
+  padding: 10px 30px 10px 30px;
+  color: #3c412f;
 }
 
 .detailsRightCol {

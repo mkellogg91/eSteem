@@ -41,21 +41,49 @@ class GameDetailsPage extends React.Component {
             });
     }
 
+    fetchPlatforms = () => {
+        if (this.state.gameData && this.state.gameData.platforms) {
+            let ratingsList = this.state.gameData.platforms.map((item) => {
+                return item.platform.name
+            })
+
+            // sort array of strings
+            ratingsList.sort(function (a, b) {
+                return a.toLowerCase().localeCompare(b.toLowerCase())
+            });
+
+            // add strings into divs
+            let formattedRatings = ratingsList.map((item) => {
+                return <div key={item}>{item}</div>
+            });
+
+            // return formatted list
+            return (
+                formattedRatings
+            );
+        }
+    }
+
     render = () => {
         return (
             <div className="container homePageJumbo">
                 <div className="gameTitle">{this.state.gameData.name}</div>
                 <div className="columnWrapper">
                     <div className="detailsLeftCol">
-                        <div>
-                            <div className="detailsLeftCol"> 
-                                
+                        <div className="section-heading">Rating</div>
+                        <div className="columnWrapper">
+                            <div>
+                                Rating: {this.state.gameData.rating}
                             </div>
-                            <div className="detailsRightCol">
-
+                            <div>
+                                {this.state.gameData.ratings_count} Ratings
                             </div>
                         </div>
-                        <h4>Description</h4>
+                        <div className="section-heading">Platforms</div>
+                        <div className="columnWrapper">
+                            {this.fetchPlatforms()}
+                        </div>
+                        <div className="section-heading">Description</div>
                         {this.state.gameData.description_raw}
                     </div>
                     <div className="detailsRightCol">

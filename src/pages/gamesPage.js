@@ -15,19 +15,19 @@ class GamesPage extends React.Component {
 
     componentDidMount() {
         // TODO: convert to redux instead of local state
-        this.requestGames();
+        this.requestGames(1);
     }
 
     /**
      * makes an API call against RAWG for games
      * params = an object containing optional parameters for the api call
      */
-    requestGames = (params) => {
+    requestGames = (pageNum) => {
         var options = {
             uri: 'https://api.rawg.io/api/games',
             qs: {
                 page_size: 50,
-                page: 1
+                page: pageNum
             },
             headers: {},
             json: true // Automatically parses the JSON string in the response

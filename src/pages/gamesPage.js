@@ -9,25 +9,49 @@ class GamesPage extends React.Component {
         super(props);
 
         this.state = {
-            gameData: []
+            loading: false,
+            gameData: [],
+            nextPageUri: null
         }
     }
 
     componentDidMount() {
         // TODO: convert to redux instead of local state
-        this.requestGames(1);
+        window.addEventListener('scroll', this.onScroll, false);
+        this.requestGames();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll, false);
+    }
+
+    onScroll = () => {
+        // only run if we are right above the bottom of the screen
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500) && this.state.gameData.length && !this.state.loading) {
+
+            // if there is a next page available, query it and append results
+            if (this.state.nextPageUri) {
+                this.requestGames(this.state.nextPageUri)
+            }
+        }
+
+
     }
 
     /**
      * makes an API call against RAWG for games
      * params = an object containing optional parameters for the api call
      */
-    requestGames = (pageNum) => {
+    requestGames = (uri = 'https://api.rawg.io/api/games', search = '') => {
+        this.setState({
+            loading: true
+        })
+
         var options = {
-            uri: 'https://api.rawg.io/api/games',
+            uri: uri,
             qs: {
-                page_size: 50,
-                page: pageNum
+                page_size: 40,
+                search: search
             },
             headers: {},
             json: true // Automatically parses the JSON string in the response
@@ -36,9 +60,14 @@ class GamesPage extends React.Component {
         rp(options)
             .then((data) => {
                 console.log('api call data: ', data);
-
+                this.setState((prevState) => ({
+                    gameData: [...prevState.gameData, ...data.results],
+                    nextPageUri: data.next
+                }))
+            })
+            .then(() => {
                 this.setState({
-                    gameData: data
+                    loading: false
                 })
             })
             .catch((err) => {
@@ -49,8 +78,8 @@ class GamesPage extends React.Component {
 
     gameList = () => {
         let gameListItems = [];
-        if (this.state.gameData && this.state.gameData.results) {
-            gameListItems = this.state.gameData.results.map((game) => {
+        if (this.state.gameData && this.state.gameData) {
+            gameListItems = this.state.gameData.map((game) => {
                 return <GameCard key={game.id} propsObj={game} />
             });
 
@@ -70,16 +99,14 @@ class GamesPage extends React.Component {
                     <h1>Game Directory</h1>
                 </div>
 
-
-                {/* TODO: style the input tag */}
-                {/* <input type="text"></input> */}
-
                 <div className="card-deck">
                     {this.gameList()}
                 </div>
+
+                {this.state.loading ? <div className="text-center"><br></br><h2>Loading...</h2></div> : <span></span>}
             </div>
         );
-    };
+    }
 
 }
 

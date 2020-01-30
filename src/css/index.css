@@ -19,15 +19,12 @@ body .container {
   background-color: #f2f4f7;
   flex-direction: column;
 }
-body hr {
-  margin-left: 10px;
-  margin-right: 10px;
-}
 body .section-heading {
-  font-size: 24;
+  font-size: 20px;
   font-weight: bold;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid;
 }
 
 code {
@@ -76,6 +73,14 @@ code {
 
 .text-center {
   text-align: center;
+}
+
+.no-m {
+  margin: 0;
+}
+
+.no-p {
+  padding: 0;
 }
 
 .header {
@@ -178,6 +183,13 @@ code {
   object-fit: cover;
   width: 100%;
   border-radius: 1%;
+  margin-bottom: 10px;
+}
+
+.small-details-img {
+  object-fit: cover;
+  width: 30%;
+  border-radius: 1%;
 }
 
 .columnWrapper {
@@ -207,6 +219,15 @@ code {
   font-size: 56px;
   font-weight: bold;
   padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.platforms {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-description {
   padding-bottom: 20px;
 }
 

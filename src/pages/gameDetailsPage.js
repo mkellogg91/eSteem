@@ -41,6 +41,7 @@ class GameDetailsPage extends React.Component {
             });
     }
 
+    // pull platforms
     fetchPlatforms = () => {
         if (this.state.gameData && this.state.gameData.platforms) {
             let ratingsList = this.state.gameData.platforms.map((item) => {
@@ -54,7 +55,7 @@ class GameDetailsPage extends React.Component {
 
             // add strings into divs
             let formattedRatings = ratingsList.map((item) => {
-                return <div key={item}>{item}</div>
+                return <li key={item}>{item}</li>
             });
 
             // return formatted list
@@ -64,6 +65,41 @@ class GameDetailsPage extends React.Component {
         }
     }
 
+    // pull genres
+    fetchGenres = () => {
+        if (this.state.gameData && this.state.gameData.genres) {
+            let genresList = this.state.gameData.genres.map((item) => {
+                return item.name
+            })
+
+            // sort array of strings
+            genresList.sort(function (a, b) {
+                return a.toLowerCase().localeCompare(b.toLowerCase())
+            });
+
+            // add strings into divs
+            let formattedGenres = genresList.map((item) => {
+                return <li key={item}>{item}</li>
+            });
+
+            // return formatted list
+            return (
+                formattedGenres
+            );
+        }
+    }
+
+    fetchScreenshots = () => {
+        if (this.state.gameData.short_screenshots) {
+            let imageList = this.state.gameData.short_screenshots.map((item) => {
+                return <img key={item.id} className="small-details-img" src={item.image}></img>
+            })
+
+            return imageList;
+        }
+    }
+
+    // developers, genres, tags
     render = () => {
         return (
             <div className="container homePageJumbo">
@@ -73,21 +109,48 @@ class GameDetailsPage extends React.Component {
                         <div className="section-heading">Rating</div>
                         <div className="columnWrapper">
                             <div>
-                                Rating: {this.state.gameData.rating}
+                                <b>Rating:</b> {this.state.gameData.rating}
                             </div>
                             <div>
-                                {this.state.gameData.ratings_count} Ratings
+                                <b>Ratings Count:</b> {this.state.gameData.ratings_count}
                             </div>
                         </div>
+                        <div className="section-heading">Genres</div>
+
+                        <div className="platforms">
+                            <ul className="no-m">
+                                {this.fetchGenres()}
+                            </ul>
+                        </div>
                         <div className="section-heading">Platforms</div>
+                        <div className="platforms">
+                            <ul className="no-m">
+                                {this.fetchPlatforms()}
+                            </ul>
+                        </div>
+                        <div className="section-heading">Other</div>
                         <div className="columnWrapper">
-                            {this.fetchPlatforms()}
+                            <div>
+                                <b>Release Date:</b> {this.state.gameData.released}
+                            </div>
+                            <div>
+                                <b>Website:</b> <a href={this.state.gameData.website}>Game Site</a>
+                            </div>
                         </div>
                         <div className="section-heading">Description</div>
                         {this.state.gameData.description_raw}
                     </div>
                     <div className="detailsRightCol">
                         <img className="details-img" src={this.state.gameData.background_image}></img>
+                        <div>
+                            {this.state.gameData.background_image_additional ? 
+                            <img className="details-img " src={this.state.gameData.background_image_additional} />
+                            : <span></span>
+                        }
+                        </div>
+                        <div>
+                            {this.fetchScreenshots()}
+                        </div>
                     </div>
                 </div>
 

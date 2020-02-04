@@ -183,13 +183,19 @@ code {
   object-fit: cover;
   width: 100%;
   border-radius: 1%;
-  margin-bottom: 10px;
 }
 
 .small-details-img {
   object-fit: cover;
   width: 30%;
-  border-radius: 1%;
+  border-radius: 3%;
+  margin-top: 10px;
+}
+
+.small-image-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .columnWrapper {
@@ -205,6 +211,7 @@ code {
   text-align: left;
   border: solid 2px;
   border-radius: 1%;
+  border-color: #000;
   padding: 10px 30px 10px 30px;
   color: #3c412f;
 }
@@ -213,6 +220,9 @@ code {
   display: flex;
   flex-direction: column;
   width: 45%;
+  border: solid 2px;
+  border-radius: 1%;
+  border-color: #000;
 }
 
 .gameTitle {
@@ -229,6 +239,12 @@ code {
 
 .game-description {
   padding-bottom: 20px;
+}
+
+.content-spread-div {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 /*# sourceMappingURL=index.css.map */

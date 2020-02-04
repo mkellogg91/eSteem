@@ -8,14 +8,14 @@ class GameDetailsPage extends React.Component {
 
         this.state = {
             gameId: this.props.location.pathname.substring(13),
-            gameData: []
+            gameData: [],
+            screenshots: []
         }
-
-
     }
 
     componentDidMount() {
         this.getGameDetails();
+        this.getScreenshots();
     }
 
     // makes api call for game details
@@ -30,13 +30,36 @@ class GameDetailsPage extends React.Component {
         rp(options)
             .then((data) => {
                 console.log('api call data: ', data);
-
                 this.setState({
                     gameData: data
                 })
             })
             .catch((err) => {
                 // API call failed...
+                console.log('API call failed ', err);
+            });
+    }
+
+    // makes an api call to get screenshots for this game
+    getScreenshots = () => {
+        // api call
+        var options = {
+            uri: 'https://api.rawg.io/api/games/' + this.state.gameId + '/screenshots',
+            qs: {},
+            headers: {},
+            json: true // Automatically parses the JSON string in the response
+        };
+
+        rp(options)
+            .then((data) => {
+                console.log('screenshot api data: ', data);
+
+                this.setState({
+                    screenshots: data.results
+                })
+            })
+            .catch((err) => {
+                // screenshot API call failed...
                 console.log('API call failed ', err);
             });
     }
@@ -55,13 +78,12 @@ class GameDetailsPage extends React.Component {
 
             // add strings into divs
             let formattedRatings = ratingsList.map((item) => {
-                return <li key={item}>{item}</li>
+                return <span  key={item}>{item}</span>
             });
 
             // return formatted list
-            return (
-                formattedRatings
-            );
+            return formattedRatings;
+
         }
     }
 
@@ -79,23 +101,45 @@ class GameDetailsPage extends React.Component {
 
             // add strings into divs
             let formattedGenres = genresList.map((item) => {
-                return <li key={item}>{item}</li>
+                return <span  key={item}>{item}</span>
             });
 
             // return formatted list
-            return (
-                formattedGenres
-            );
+            return formattedGenres;
         }
     }
 
-    fetchScreenshots = () => {
-        if (this.state.gameData.short_screenshots) {
-            let imageList = this.state.gameData.short_screenshots.map((item) => {
-                return <img key={item.id} className="small-details-img" src={item.image}></img>
+    // pull genres
+    fetchDevelopers = () => {
+        if (this.state.gameData && this.state.gameData.developers) {
+            let developerList = this.state.gameData.developers.map((item) => {
+                return item.name
             })
 
-            return imageList;
+            // sort array of strings
+            developerList.sort(function (a, b) {
+                return a.toLowerCase().localeCompare(b.toLowerCase())
+            });
+
+            // add strings into divs
+            let formattedDevelopers = developerList.map((item) => {
+                return <span  key={item}>{item}</span>
+            });
+
+            // return formatted list
+            return formattedDevelopers;
+        }
+    }
+
+    // pull screenshots
+    fetchScreenshots = () => {
+        if (this.state.screenshots && this.state.screenshots.length > 0) {
+            let screenshotList = this.state.screenshots.map((item) => {
+                return <img className="small-details-img" key={item.id} src={item.image}></img>
+            })
+
+            // return formatted list
+            return screenshotList;
         }
     }
 
@@ -115,19 +159,22 @@ class GameDetailsPage extends React.Component {
                                 <b>Ratings Count:</b> {this.state.gameData.ratings_count}
                             </div>
                         </div>
-                        <div className="section-heading">Genres</div>
 
-                        <div className="platforms">
-                            <ul className="no-m">
-                                {this.fetchGenres()}
-                            </ul>
+                        <div className="section-heading">Genres</div>
+                        <div className="columnWrapper">
+                            {this.fetchGenres()}
                         </div>
+
                         <div className="section-heading">Platforms</div>
-                        <div className="platforms">
-                            <ul className="no-m">
-                                {this.fetchPlatforms()}
-                            </ul>
+                        <div className="columnWrapper">
+                            {this.fetchPlatforms()}
                         </div>
+
+                        <div className="section-heading">Developers</div>
+                        <div className="columnWrapper">
+                            {this.fetchDevelopers()}
+                        </div>
+
                         <div className="section-heading">Other</div>
                         <div className="columnWrapper">
                             <div>
@@ -143,12 +190,12 @@ class GameDetailsPage extends React.Component {
                     <div className="detailsRightCol">
                         <img className="details-img" src={this.state.gameData.background_image}></img>
                         <div>
-                            {this.state.gameData.background_image_additional ? 
-                            <img className="details-img " src={this.state.gameData.background_image_additional} />
-                            : <span></span>
-                        }
+                            {this.state.gameData.background_image_additional ?
+                                <img className="details-img " src={this.state.gameData.background_image_additional} />
+                                : <span></span>
+                            }
                         </div>
-                        <div>
+                        <div className="small-image-wrapper">
                             {this.fetchScreenshots()}
                         </div>
                     </div>

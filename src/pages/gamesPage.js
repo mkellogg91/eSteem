@@ -11,14 +11,15 @@ class GamesPage extends React.Component {
         this.state = {
             loading: false,
             gameData: [],
-            nextPageUri: null
+            nextPageUri: null,
+            searchText: ""
         }
     }
 
     componentDidMount() {
         // TODO: convert to redux instead of local state
         window.addEventListener('scroll', this.onScroll, false);
-        this.requestGames();
+        this.requestGames(undefined, undefined);
     }
 
     componentWillUnmount() {
@@ -92,11 +93,32 @@ class GamesPage extends React.Component {
         }
     }
 
+    // handler for search click
+    formSubmit = (e) => {
+        e.preventDefault();
+        this.setState({
+            gameData: []
+        })
+        this.requestGames(undefined, this.state.searchText);
+    }
+
+    // handler for search field change
+    searchChanged = (e) => {
+        this.setState({
+            searchText: e.target.value
+        })
+    }
+
     render = () => {
         return (
             <div className="container">
                 <div className="text-center">
-                    <h1>Game Directory</h1>
+                    <form onSubmit={this.formSubmit}>
+                        <input type='text' className="search-bar" value={this.state.searchText} onChange={this.searchChanged}
+                            placeholder="Search for a game..." />
+                        <button type="submit" className="search-bar-button">Search</button>
+                    </form>
+
                 </div>
 
                 <div className="card-deck">

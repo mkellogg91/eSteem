@@ -78,7 +78,7 @@ class GameDetailsPage extends React.Component {
 
             // add strings into divs
             let formattedRatings = ratingsList.map((item) => {
-                return <span  key={item}>{item}</span>
+                return <li key={item}>{item}</li>
             });
 
             // return formatted list
@@ -101,7 +101,7 @@ class GameDetailsPage extends React.Component {
 
             // add strings into divs
             let formattedGenres = genresList.map((item) => {
-                return <span  key={item}>{item}</span>
+                return <li key={item}>{item}</li>
             });
 
             // return formatted list
@@ -123,7 +123,7 @@ class GameDetailsPage extends React.Component {
 
             // add strings into divs
             let formattedDevelopers = developerList.map((item) => {
-                return <span  key={item}>{item}</span>
+                return <li key={item}>{item}</li>
             });
 
             // return formatted list
@@ -161,18 +161,24 @@ class GameDetailsPage extends React.Component {
                         </div>
 
                         <div className="section-heading">Genres</div>
-                        <div className="columnWrapper">
-                            {this.fetchGenres()}
+                        <div>
+                            <ul className="content-list">
+                                {this.fetchGenres()}
+                            </ul>
                         </div>
 
                         <div className="section-heading">Platforms</div>
-                        <div className="columnWrapper">
-                            {this.fetchPlatforms()}
+                        <div>
+                            <ul className="content-list">
+                                {this.fetchPlatforms()}
+                            </ul>
                         </div>
 
                         <div className="section-heading">Developers</div>
-                        <div className="columnWrapper">
-                            {this.fetchDevelopers()}
+                        <div>
+                            <ul className="content-list">
+                                {this.fetchDevelopers()}
+                            </ul>
                         </div>
 
                         <div className="section-heading">Other</div>

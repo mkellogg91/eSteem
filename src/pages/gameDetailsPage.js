@@ -151,7 +151,7 @@ class GameDetailsPage extends React.Component {
                 <div className="columnWrapper">
                     <div className="detailsLeftCol">
                         <div className="section-heading">Rating</div>
-                        <div className="columnWrapper">
+                        <div className="horizontal-display">
                             <div>
                                 <b>Rating:</b> {this.state.gameData.rating}
                             </div>
@@ -182,7 +182,7 @@ class GameDetailsPage extends React.Component {
                         </div>
 
                         <div className="section-heading">Other</div>
-                        <div className="columnWrapper">
+                        <div className="horizontal-display">
                             <div>
                                 <b>Release Date:</b> {this.state.gameData.released}
                             </div>

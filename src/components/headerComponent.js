@@ -34,7 +34,6 @@ class HeaderComponent extends React.Component {
 
                     <div className="menu-link-div">
                         <NavLink to="/" className="menu-bar-link">Home</NavLink>
-                        <NavLink to="/games" className="menu-bar-link">Games</NavLink>
                         <NavLink to="/about" className="menu-bar-link">About</NavLink>
                     </div>
                     <div className="login-div">
@@ -47,7 +46,6 @@ class HeaderComponent extends React.Component {
 
                 <div className={this.state.dropdownVisible ? "dropdown-content" : "hide"}>
                     <NavLink to="/" className="menu-bar-link">Home</NavLink>
-                    <NavLink to="/games" className="menu-bar-link">Games</NavLink>
                     <NavLink to="/about" className="menu-bar-link">About</NavLink>
                     <NavLink to="/login" className="menu-bar-link">Login</NavLink>
                 </div>

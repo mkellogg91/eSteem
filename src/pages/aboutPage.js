@@ -5,7 +5,8 @@ class AboutPage extends React.Component{
     render = () => {
         return (
             <div className="container homePageJumbo">
-                <h1>About Page</h1>
+                <h1 className="">Esteem Game Utility</h1>
+                <p className="">Esteem is a helpful game library for gamers by gamers.</p>
             </div>
         );
     };

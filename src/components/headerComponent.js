@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import VideogameAssetOutlinedIcon from '@material-ui/icons/VideogameAssetOutlined';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+
 
 class HeaderComponent extends React.Component {
 
@@ -22,6 +24,10 @@ class HeaderComponent extends React.Component {
                 <div className="login-div">
                     <NavLink to="/login" className="menu-bar-link">Login</NavLink>
                 </div>
+                <div className="login-div">
+                    <DehazeIcon fontSize="large" className="pl-5" />
+                </div>
+                
             </div>
         );
     };

@@ -1,7 +1,7 @@
 import React from 'react';
 import rp from 'request-promise';
 import GameCard from '../components/gameCardComponent';
-import LoopIcon from '@material-ui/icons/Loop';
+
 
 class GamesPage extends React.Component {
 

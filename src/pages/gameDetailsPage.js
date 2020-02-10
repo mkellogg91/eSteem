@@ -195,12 +195,12 @@ class GameDetailsPage extends React.Component {
                     </div>
                     <div className="detailsRightCol">
                         <img className="details-img" src={this.state.gameData.background_image}></img>
-                        <div>
-                            {this.state.gameData.background_image_additional ?
-                                <img className="details-img " src={this.state.gameData.background_image_additional} />
-                                : <span></span>
-                            }
-                        </div>
+                        
+                        {this.state.gameData.background_image_additional ?
+                            <img className="details-img " src={this.state.gameData.background_image_additional} />
+                            : <span></span>
+                        }
+                        
                         <div className="small-image-wrapper">
                             {this.fetchScreenshots()}
                         </div>

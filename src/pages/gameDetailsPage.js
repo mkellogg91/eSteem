@@ -9,7 +9,8 @@ class GameDetailsPage extends React.Component {
         this.state = {
             gameId: this.props.location.pathname.substring(13),
             gameData: [],
-            screenshots: []
+            screenshots: [],
+            showMoreToggle: false
         }
     }
 
@@ -143,6 +144,61 @@ class GameDetailsPage extends React.Component {
         }
     }
 
+    // when show more is clicked
+    showMoreHandler = () => {
+        this.setState({
+            showMoreToggle: true
+        })
+    }
+
+    // when show less is clicked
+    showLessHandler = () => {
+        this.setState({
+            showMoreToggle: false
+        })
+    }
+
+    // decides what to show in description
+    descriptionRenderer = () => {
+        let shortDesc = '';
+
+        // dont run anything until state is populated
+        if (this.state.gameData && this.state.gameData.description_raw) {
+            // if the description is already very short just show without any buttons
+            if (this.state.gameData.description_raw && this.state.gameData.description_raw.length <= 300) {
+                shortDesc = this.state.gameData.description_raw;
+                return (
+                    <span>{shortDesc}</span>
+                )
+            }
+
+            // show all text
+            if (this.state.showMoreToggle) {
+                return (
+                    <div>
+                        <span>{this.state.gameData.description_raw}</span>
+                        <div className="description-button-wrapper">
+                            <button className="description-show-button" onClick={() => this.showLessHandler()}>show less</button>
+                        </div>
+                    </div>
+                );
+            }
+            // show shortened text
+            else {
+                shortDesc = this.state.gameData.description_raw.substring(0, 300) + '...';
+
+                return (
+                    <div>
+                        <span>{shortDesc}</span>
+                        <div className="description-button-wrapper">
+                            <button className="description-show-button" onClick={() => this.showMoreHandler()}>show more</button>
+                        </div>
+                    </div>
+                )
+            }
+        }
+    }
+
     // developers, genres, tags
     render = () => {
         return (
@@ -191,16 +247,16 @@ class GameDetailsPage extends React.Component {
                             </div>
                         </div>
                         <div className="section-heading">Description</div>
-                        {this.state.gameData.description_raw}
+                        {this.descriptionRenderer()}
                     </div>
                     <div className="detailsRightCol">
                         <img className="details-img" src={this.state.gameData.background_image}></img>
-                        
+
                         {this.state.gameData.background_image_additional ?
                             <img className="details-img " src={this.state.gameData.background_image_additional} />
                             : <span></span>
                         }
-                        
+
                         <div className="small-image-wrapper">
                             {this.fetchScreenshots()}
                         </div>

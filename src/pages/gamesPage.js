@@ -18,6 +18,7 @@ class GamesPage extends React.Component {
 
     componentDidMount() {
         // TODO: convert to redux instead of local state
+        this.RAPI_KEY = process.env.RAPI_KEY;
         window.addEventListener('scroll', this.onScroll, false);
         this.requestGames(undefined, undefined);
     }
@@ -51,6 +52,7 @@ class GamesPage extends React.Component {
         var options = {
             uri: uri,
             qs: {
+                key: this.RAPI_KEY,
                 page_size: 40,
                 search: search
             },

@@ -15,6 +15,7 @@ class GameDetailsPage extends React.Component {
     }
 
     componentDidMount() {
+        this.RAPI = process.env.RAPI
         this.getGameDetails();
         this.getScreenshots();
     }
@@ -23,7 +24,9 @@ class GameDetailsPage extends React.Component {
     getGameDetails = () => {
         var options = {
             uri: 'https://api.rawg.io/api/games/' + this.state.gameId,
-            qs: {},
+            qs: {
+                key: this.RAPI
+            },
             headers: {},
             json: true // Automatically parses the JSON string in the response
         };
@@ -46,7 +49,9 @@ class GameDetailsPage extends React.Component {
         // api call
         var options = {
             uri: 'https://api.rawg.io/api/games/' + this.state.gameId + '/screenshots',
-            qs: {},
+            qs: {
+                key: this.RAPI
+            },
             headers: {},
             json: true // Automatically parses the JSON string in the response
         };

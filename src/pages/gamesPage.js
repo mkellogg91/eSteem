@@ -18,7 +18,7 @@ class GamesPage extends React.Component {
 
     componentDidMount() {
         // TODO: convert to redux instead of local state
-        this.RAPI = process.env.RAPI
+        this.RAPI = process.env.REACT_APP_RAWG
         window.addEventListener('scroll', this.onScroll, false);
         this.requestGames(undefined, undefined);
     }

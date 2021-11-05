@@ -15,7 +15,7 @@ class GameDetailsPage extends React.Component {
     }
 
     componentDidMount() {
-        this.RAPI = process.env.RAPI
+        this.RAPI = process.env.REACT_APP_RAWG
         this.getGameDetails();
         this.getScreenshots();
     }
